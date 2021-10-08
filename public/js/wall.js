@@ -31,8 +31,8 @@ function initializeCode() {
         const ingredientInput = document.getElementById("ingredients-text").value;
         //var ingredientsList = [];
         ingredientsList.push(ingredientInput);
-        var tField = document.getElementById("test-area"); 
-        tField.append(ingredientsList);
+        //var tField = document.getElementById("test-area"); 
+        //tField.append(ingredientsList);
         //document.getElementById("test-area").innerHTML = ingredientsList;
     });
 
@@ -40,27 +40,32 @@ function initializeCode() {
         const instructionInput = document.getElementById("instructions-text").value;
         //var instructionsList = [];
         instructionsList.push(instructionInput);
-        var tField = document.getElementById("test-area2"); 
-        tField.append(instructionsList);
+        //var tField = document.getElementById("test-area2"); 
+        //tField.append(instructionsList);
         //document.getElementById("test-area").innerHTML = instructionsList;
     });
 
     addRecipeButton.addEventListener("click", function() {
         const nameInput = document.getElementById("name-text");
         var hField = document.getElementById("test-header");
-        hField.append(nameInput.value);
+        var tField = document.getElementById("test-area");
+        var tField2 = document.getElementById("test-area2");
+        //hField.append(nameInput.value);
 
         fetch("/recipe/", {
             method: "post",
             headers: {
                 "Content-type": "application/json"
             },
-            body: '{ "name": "' + nameInput.value + '"instructions": "' + instructionsList + '" "ingredients": "' + ingredientsList + '"  }'
+            body: '{ "name": "' + nameInput.value + '"instructions": "' + JSON.stringify(instructionsList) + '" "ingredients": "' + JSON.stringify(ingredientsList) + '"  }'
             //body: '{ "name": "' + nameInput + ' "instructions": "' + instructionsList + '" "ingredients": "' + ingredientsList + '" }'
            })
            .then(response => response.json())
            .then(data => {
                console.log(data);
+               hField.append(data.name);
+               tField.append(data.instructions);
+               tField2.append(data.ingredients);
            })
     })
 
