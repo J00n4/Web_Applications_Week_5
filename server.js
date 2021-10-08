@@ -98,6 +98,7 @@ app.post("/recipe/", (req, res) => {
 
 app.get("/recipe/", (req, res) => {
     res.send(req.body);
+    //res.send(req.body);
     //res.json(recipes);
     //res.send("This page is for recipes");
 });
