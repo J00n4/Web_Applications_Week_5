@@ -31,8 +31,8 @@ function initializeCode() {
         const ingredientInput = document.getElementById("ingredients-text").value;
         //var ingredientsList = [];
         ingredientsList.push(ingredientInput);
-        var kentta = document.getElementById("test-area"); 
-        kentta.append(ingredientsList);
+        var tField = document.getElementById("test-area"); 
+        tField.append(ingredientsList);
         document.getElementById("test-area").innerHTML = ingredientsList;
     });
 
@@ -40,10 +40,15 @@ function initializeCode() {
         const instructionInput = document.getElementById("instructions-text").value;
         //var instructionsList = [];
         instructionsList.push(instructionInput);
+        var tField = document.getElementById("test-area"); 
+        tField.append(instructionsList);
+        document.getElementById("test-area").innerHTML = instructionsList;
     });
 
     addRecipeButton.addEventListener("click", function() {
         const nameInput = document.getElementById("name-text");
+        var hField = document.getElementById("test-header");
+        hField.append(nameInput.value);
 
         fetch("/recipe/", {
             method: "post",
