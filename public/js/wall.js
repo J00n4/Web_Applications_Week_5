@@ -24,10 +24,12 @@ function initializeCode() {
     const addIngredientsButton = document.getElementById("add-ingredient");
     const addInstructionButton = document.getElementById("add-instruction");
     const addRecipeButton = document.getElementById("submit");
+    var ingredientsList = [];
+    var instructionsList = [];
 
     addIngredientsButton.addEventListener("click", function() {
         const ingredientInput = document.getElementById("ingredients-text").value;
-        var ingredientsList = [];
+        //var ingredientsList = [];
         ingredientsList.push(ingredientInput);
         var kentta = document.getElementById("test-area"); 
         kentta.append(ingredientsList);
@@ -36,7 +38,7 @@ function initializeCode() {
 
     addInstructionButton.addEventListener("click", function() {
         const instructionInput = document.getElementById("instructions-text").value;
-        var instructionsList = [];
+        //var instructionsList = [];
         instructionsList.push(instructionInput);
     });
 
