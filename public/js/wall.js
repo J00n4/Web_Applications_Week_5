@@ -26,6 +26,7 @@ function initializeCode() {
     const addRecipeButton = document.getElementById("submit");
     var ingredientsList = [];
     var instructionsList = [];
+    var name = "";
 
     addIngredientsButton.addEventListener("click", function() {
         const ingredientInput = document.getElementById("ingredients-text").value;
@@ -57,7 +58,12 @@ function initializeCode() {
             headers: {
                 "Content-type": "application/json"
             },
-            body: '{ "name": "' + nameInput.value + '"instructions": "' + JSON.stringify(instructionsList) + '" "ingredients": "' + JSON.stringify(ingredientsList) + '"  }'
+            body: JSON.stringify({
+                name: nameInput.value,
+                instructions: instructionsList,
+                ingredients: ingredientsList
+            })
+            //body: '{ "name": "' + nameInput.value + '"instructions": "' + JSON.stringify(instructionsList) + '" "ingredients": "' + JSON.stringify(ingredientsList) + '"  }'
             //body: '{ "name": "' + nameInput + ' "instructions": "' + instructionsList + '" "ingredients": "' + ingredientsList + '" }'
            })
            .then(response => response.json())
