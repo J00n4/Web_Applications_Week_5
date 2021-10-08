@@ -17,9 +17,9 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, "public")));
 
 let recipes = [
-    {recipe: "pizza", instructions: "instructions", ingredients: "ingredients"},
-    {recipe: "pasta", instructions: "instructions", ingredients: "ingredients"},
-    {recipe: "potatoes", instructions: "instructions", ingredients: "ingredients"}
+    {name: "pizza", instructions: "instructions", ingredients: "ingredients"},
+    {name: "pasta", instructions: "instructions", ingredients: "ingredients"},
+    {name: "potatoes", instructions: "instructions", ingredients: "ingredients"}
 ];
 
 app.get("/recipe/:food", (req, res) => {
