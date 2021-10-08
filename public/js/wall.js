@@ -21,6 +21,13 @@ function initializeCode() {
         onCloseEnd: null,
         preventScrolling: true
     };*/
+    fetch("http://localhost:1234/recipe/:food")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("test-header").innerText = data.name;
+            document.getElementById("test-area").innerText = data.instructions;
+            document.getElementById("test-area2").innerText = data.ingredients;
+        })
     const addIngredientsButton = document.getElementById("add-ingredient");
     const addInstructionButton = document.getElementById("add-instruction");
     const addRecipeButton = document.getElementById("submit");

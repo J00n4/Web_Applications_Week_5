@@ -44,9 +44,9 @@ app.get("/", (req, res) => {
 
 });
 
-/*app.get("/", (req, res) => {
-    res.render();
-});*/
+app.get("/", (req, res) => {
+    res.render('index', recipes);
+});
 
 //app.use("/api/poems", require("./api/poems.js"));
 
