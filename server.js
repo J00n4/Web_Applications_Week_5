@@ -97,8 +97,9 @@ app.post("/recipe/", (req, res) => {
 });
 
 app.get("/recipe/", (req, res) => {
-    res.json(recipes);
-    res.send("This page is for recipes");
+    res.send(req.body);
+    //res.json(recipes);
+    //res.send("This page is for recipes");
 });
 
 app.listen(port, () => console.log(`Server listening a port ${port}!`));
