@@ -50,7 +50,7 @@ function initializeCode() {
             headers: {
                 "Content-type": "application/json"
             },
-            body: '{ "recipe": "' + nameInput.value + '"instructions": "' + instructionsList + '" "ingredients": "' + ingredientsList + '"  }'
+            body: '{ "name": "' + nameInput.value + '"instructions": "' + instructionsList + '" "ingredients": "' + ingredientsList + '"  }'
             //body: '{ "name": "' + nameInput + ' "instructions": "' + instructionsList + '" "ingredients": "' + ingredientsList + '" }'
            })
            .then(response => response.json())
