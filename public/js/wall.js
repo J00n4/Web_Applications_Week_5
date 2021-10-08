@@ -33,16 +33,16 @@ function initializeCode() {
         ingredientsList.push(ingredientInput);
         var tField = document.getElementById("test-area"); 
         tField.append(ingredientsList);
-        document.getElementById("test-area").innerHTML = ingredientsList;
+        //document.getElementById("test-area").innerHTML = ingredientsList;
     });
 
     addInstructionButton.addEventListener("click", function() {
         const instructionInput = document.getElementById("instructions-text").value;
         //var instructionsList = [];
         instructionsList.push(instructionInput);
-        var tField = document.getElementById("test-area"); 
+        var tField = document.getElementById("test-area2"); 
         tField.append(instructionsList);
-        document.getElementById("test-area").innerHTML = instructionsList;
+        //document.getElementById("test-area").innerHTML = instructionsList;
     });
 
     addRecipeButton.addEventListener("click", function() {

@@ -44,6 +44,10 @@ app.get("/", (req, res) => {
 
 });
 
+/*app.get("/", (req, res) => {
+    res.render();
+});*/
+
 //app.use("/api/poems", require("./api/poems.js"));
 
 /* Tehtävä 2 alkaa
