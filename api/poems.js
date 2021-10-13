@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Recipes = require("../models/Recipes");
+const Recipe = require("../models/Recipes");
 const router = express.Router();
 const fs = require("fs");
 
@@ -107,7 +107,7 @@ Tehtävä 2 loppuu*/
 
 router.get("/recipe/", (req, res, next) => {
     //res.json(poems);
-    Recipes.find({}, (err, recipes) => {
+    Recipe.find({}, (err, recipes) => {
         if (err) return next(err);
         if (recipes) {
             return res.json(recipes);
@@ -118,19 +118,19 @@ router.get("/recipe/", (req, res, next) => {
 
 })
 
-router.get("/recipe/:id", (req, res, next) => {
+router.get("/recipe/:food", (req, res, next) => {
     //res.json(poems[req.params.id]);
-    Recipes.findById( req.params.id, (err, id) => {
+    Recipe.findById( req.params.food, (err, recipes) => {
         if (err) {
             if (err.name === "CastError") {
-                return res.status(404).send(`Recipe id ${req.params.id} not found!`);
+                return res.status(404).send(`Recipe id ${req.params.food} not found!`);
             }
             return next(err);
         }
-        if (recipe) {
-            return res.send(recipe);
+        if (recipes) {
+            return res.send(recipes);
         } else {
-            return res.status(404).send(`Recipe id ${req.params.id} not found!`);
+            return res.status(404).send(`Recipe id ${req.params.food} not found!`);
         }
 
     })
@@ -138,7 +138,7 @@ router.get("/recipe/:id", (req, res, next) => {
 })
 
 router.post("/recipe/", (req, res, next) => {
-    Recipes.findOne({ name: req.body.name}, (err, name) => {
+    Recipe.findOne({ name: req.body.name}, (err, name) => {
         if(err) return next(err);
         if(!name) {
             new Recipes({
