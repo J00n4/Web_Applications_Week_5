@@ -6,14 +6,14 @@ const fs = require("fs");
 
 let poems = [];
 
-fs.readFile('./data/poems.json', "utf-8", (err, data) => {
+/*fs.readFile('./data/poems.json', "utf-8", (err, data) => {
     if(err) {
         console.log(err);
         return;
     }
     poems = JSON.parse(data);
     console.log("Data loaded!")
-})
+})*/
 
 
 
@@ -120,15 +120,15 @@ router.get("/", (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
     //res.json(poems[req.params.id]);
-    Recipes.findById( req.params.id, (err, name) => {
+    Recipes.findById( req.params.id, (err, recipe) => {
         if (err) {
             if (err.name === "CastError") {
                 return res.status(404).send(`Recipe id ${req.params.id} not found!`);
             }
             return next(err);
         }
-        if (name) {
-            return res.send(name);
+        if (recipe) {
+            return res.send(recipe);
         } else {
             return res.status(404).send(`Recipe id ${req.params.id} not found!`);
         }
