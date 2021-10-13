@@ -1,4 +1,6 @@
-const express = require("express")
+const express = require("express");
+const mongoose = require("mongoose");
+const Recipes = require("../models/Recipes");
 const router = express.Router();
 const fs = require("fs");
 
@@ -23,8 +25,23 @@ router.get("/:id", (req, res) => {
 
 })
 
-router.post("/", (req, res) => {
-    poems.push(req.body);
+router.post("/recipe/", (req, res, next) => {
+    Recipes.findOne({ name: req.body.recipes}, (err, recipes) => {
+        if(err) return next(err);
+        if(!recipes) {
+            new Recipes({
+                name: req.body.recipes,
+                instructions: req.body.instructions,
+                ingredients: req.body.ingredients
+            }).save((err) => {
+                if(err) return next(err);
+                return res.send(req.body);
+            });
+        } else {
+            return res.status(403).send("Already has that recipe!");
+        }
+    });
+    /*poems.push(req.body);
     
     fs.writeFile("./data/poems.json", JSON.stringify(poems), err => {
         if(err) {
@@ -32,7 +49,7 @@ router.post("/", (req, res) => {
             return;
         }
         console.log("Data saved!");
-    })
+    })*/
     res.send(req.body);
     //console.log("Poem: " + JSON.stringify(req.body) + " added!");
 }) 

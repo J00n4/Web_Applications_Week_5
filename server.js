@@ -2,10 +2,21 @@
 
 
 const express = require("express");
+const mongoose = require("mongoose");
 const os = require("os");
 const path = require("path");
 const app = express();
 const port = 1234;
+
+
+const mongoDB = "mongodb://localhost:27017/testdb";
+mongoose.connect(mongoDB);
+mongoose.Promise = Promise;
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "MongoDB connection error"));
+
+
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
@@ -89,9 +100,9 @@ Tehtävä 2 loppuu*/
     res.end(JSON.stringify(response));
 })*/
 
-app.post("/recipe/", (req, res) => {
-    recipes.push(req.body);
-    console.log("This is getting added: " + JSON.stringify(req.body));
+app.post("/recipe/", (req, res, next) => {
+    //recipes.push(req.body);
+    //console.log("This is getting added: " + JSON.stringify(req.body));
 
     res.send(req.body);
 });
