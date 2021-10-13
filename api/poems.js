@@ -19,10 +19,10 @@ fs.readFile('./data/poems.json', "utf-8", (err, data) => {
 
 router.get("/", (req, res, next) => {
     //res.json(poems);
-    Recipes.find({}, (err, recipes) => {
+    Recipes.find({}, (err, Recipes) => {
         if (err) return next(err);
-        if (recipes) {
-            return res.json(recipes);
+        if (Recipes) {
+            return res.json(Recipes);
         } else {
             return res.status(404).send("Not found")
         }
@@ -32,15 +32,15 @@ router.get("/", (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
     //res.json(poems[req.params.id]);
-    Recipes.findById( req.params.id, (err, recipes) => {
+    Recipes.findById( req.params.id, (err, Recipes) => {
         if (err) {
             if (err.name === "CastError") {
                 return res.status(404).send(`Recipe id ${req.params.id} not found!`);
             }
             return next(err);
         }
-        if (recipes) {
-            return res.send(recipes);
+        if (Recipes) {
+            return res.send(Recipes);
         } else {
             return res.status(404).send(`Recipe id ${req.params.id} not found!`);
         }
@@ -50,9 +50,9 @@ router.get("/:id", (req, res, next) => {
 })
 
 router.post("/recipe/", (req, res, next) => {
-    Recipes.findOne({ name: req.body.recipes}, (err, recipes) => {
+    Recipes.findOne({ name: req.body.recipes}, (err, Recipes) => {
         if(err) return next(err);
-        if(!recipes) {
+        if(!Recipes) {
             new Recipes({
                 name: req.body.recipes,
                 instructions: req.body.instructions,
