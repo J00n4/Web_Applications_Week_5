@@ -8,8 +8,8 @@ const path = require("path");
 const app = express();
 const port = 1234;
 
-
-const mongoDB = "mongodb://localhost:27017/testdb";
+const mongoDB = process.env.MONGO_URL;
+//const mongoDB = "mongodb://localhost:27017/testdb";
 mongoose.connect(mongoDB);
 mongoose.Promise = Promise;
 const db = mongoose.connection;
