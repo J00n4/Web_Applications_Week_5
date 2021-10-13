@@ -138,7 +138,7 @@ router.get("/:id", (req, res, next) => {
 })
 
 router.post("/recipe/", (req, res, next) => {
-    Recipes.findOne({ name: req.body.recipes}, (err, recipes) => {
+    Recipes.findOne({ name: req.body.name}, (err, recipes) => {
         if(err) return next(err);
         if(!recipes) {
             new Recipes({
