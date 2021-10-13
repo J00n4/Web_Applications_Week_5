@@ -50,7 +50,7 @@ router.post("/recipe/", (req, res, next) => {
         }
         console.log("Data saved!");
     })*/
-    res.send(req.body);
+    //res.send(req.body);
     //console.log("Poem: " + JSON.stringify(req.body) + " added!");
 }) 
 
