@@ -120,15 +120,15 @@ router.get("/", (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
     //res.json(poems[req.params.id]);
-    Recipes.findById( req.params.id, (err, recipes) => {
+    Recipes.findById( req.params.id, (err, name) => {
         if (err) {
             if (err.name === "CastError") {
                 return res.status(404).send(`Recipe id ${req.params.id} not found!`);
             }
             return next(err);
         }
-        if (recipes) {
-            return res.send(recipes);
+        if (name) {
+            return res.send(name);
         } else {
             return res.status(404).send(`Recipe id ${req.params.id} not found!`);
         }
@@ -138,9 +138,9 @@ router.get("/:id", (req, res, next) => {
 })
 
 router.post("/recipe/", (req, res, next) => {
-    Recipes.findOne({ name: req.body.name}, (err, recipes) => {
+    Recipes.findOne({ name: req.body.name}, (err, name) => {
         if(err) return next(err);
-        if(!recipes) {
+        if(!name) {
             new Recipes({
                 name: req.body.name,
                 instructions: req.body.instructions,
