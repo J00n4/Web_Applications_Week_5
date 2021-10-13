@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "api")));
 
 
-app.use("/recipe/", require("./api/poems.js"));
+app.use("/", require("./api/poems.js"));
 
 app.listen(port, () => console.log(`Server listening a port ${port}!`));
 

@@ -58,7 +58,7 @@ function initializeCode() {
         var hField = document.getElementById("test-header");
         var tField = document.getElementById("test-area");
         var tField2 = document.getElementById("test-area2");
-        hField.append(nameInput.value);
+        //hField.append(nameInput.value);
 
         fetch("/recipe/", {
             method: "post",

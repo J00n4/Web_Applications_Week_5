@@ -106,7 +106,7 @@ Tehtävä 2 loppuu*/
 
 
 router.get("/recipe/", (req, res, next) => {
-    res.json(recipes);
+    //res.json(recipes);
     Recipe.find({}, (err, recipes) => {
         if (err) return next(err);
         if (recipes) {
