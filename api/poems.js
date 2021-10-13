@@ -90,22 +90,22 @@ Tehtävä 2 loppuu*/
     res.end(JSON.stringify(response));
 })*/
 
-router.post("/recipe/", (req, res, next) => {
+/*router.post("/recipe/", (req, res, next) => {
     //recipes.push(req.body);
     //console.log("This is getting added: " + JSON.stringify(req.body));
 
     res.send(req.body);
-});
+});*/
 
-router.get("/recipe/", (req, res) => {
+/*router.get("/recipe/", (req, res) => {
     res.send(recipes);
     //res.send(req.body);
     //res.json(recipes);
     //res.send("This page is for recipes");
-});
+});*/
 
 
-router.get("/", (req, res, next) => {
+router.get("/recipe/", (req, res, next) => {
     //res.json(poems);
     Recipes.find({}, (err, recipes) => {
         if (err) return next(err);
@@ -118,9 +118,9 @@ router.get("/", (req, res, next) => {
 
 })
 
-router.get("/:id", (req, res, next) => {
+router.get("/recipe/:id", (req, res, next) => {
     //res.json(poems[req.params.id]);
-    Recipes.findById( req.params.id, (err, recipe) => {
+    Recipes.findById( req.params.id, (err, id) => {
         if (err) {
             if (err.name === "CastError") {
                 return res.status(404).send(`Recipe id ${req.params.id} not found!`);
@@ -147,6 +147,7 @@ router.post("/recipe/", (req, res, next) => {
                 ingredients: req.body.ingredients
             }).save((err) => {
                 if(err) return next(err);
+                recipes.push(req.body);
                 return res.send(req.body);
             });
         } else {
