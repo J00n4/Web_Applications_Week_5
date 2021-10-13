@@ -6,7 +6,11 @@ const fs = require("fs");
 
 let poems = [];
 
-let recipes = [];
+let recipes = [
+    {name: "pizza", instructions: "instructions", ingredients: "ingredients"},
+    {name: "pasta", instructions: "instructions", ingredients: "ingredients"},
+    {name: "potatoes", instructions: "instructions", ingredients: "ingredients"}
+];
 
 fs.readFile('./data/poems.json', "utf-8", (err, data) => {
     if(err) {
@@ -19,10 +23,10 @@ fs.readFile('./data/poems.json', "utf-8", (err, data) => {
 
 router.get("/", (req, res, next) => {
     //res.json(poems);
-    Recipes.find({}, (err, Recipes) => {
+    Recipes.find({}, (err, recipes) => {
         if (err) return next(err);
-        if (Recipes) {
-            return res.json(Recipes);
+        if (recipes) {
+            return res.json(recipes);
         } else {
             return res.status(404).send("Not found")
         }
@@ -32,15 +36,15 @@ router.get("/", (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
     //res.json(poems[req.params.id]);
-    Recipes.findById( req.params.id, (err, Recipes) => {
+    Recipes.findById( req.params.id, (err, recipes) => {
         if (err) {
             if (err.name === "CastError") {
                 return res.status(404).send(`Recipe id ${req.params.id} not found!`);
             }
             return next(err);
         }
-        if (Recipes) {
-            return res.send(Recipes);
+        if (recipes) {
+            return res.send(recipes);
         } else {
             return res.status(404).send(`Recipe id ${req.params.id} not found!`);
         }
@@ -50,11 +54,11 @@ router.get("/:id", (req, res, next) => {
 })
 
 router.post("/recipe/", (req, res, next) => {
-    Recipes.findOne({ name: req.body.recipes}, (err, Recipes) => {
+    Recipes.findOne({ name: req.body.recipes}, (err, recipes) => {
         if(err) return next(err);
-        if(!Recipes) {
+        if(!recipes) {
             new Recipes({
-                name: req.body.recipes,
+                name: req.body.name,
                 instructions: req.body.instructions,
                 ingredients: req.body.ingredients
             }).save((err) => {
