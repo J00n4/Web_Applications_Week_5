@@ -34,8 +34,8 @@ router.get("/recipe/:food", (req, res) => {
         'Ingredients': ingredients
     });*/
     const name = req.params.food;
-    const instructions = {};
-    const ingredients = {};
+    const instructions = [];
+    const ingredients = [];
     res.json({name});
     //res.send(req.params);
 });
