@@ -21,7 +21,7 @@ function initializeCode() {
         onCloseEnd: null,
         preventScrolling: true
     };*/
-    fetch("http://localhost:1234/recipe/:food")
+    fetch("/recipe/:food")
         .then(response => response.json())
         .then(data => {
             document.getElementById("test-header").innerText = data.name;
