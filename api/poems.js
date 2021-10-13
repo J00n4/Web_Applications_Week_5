@@ -15,13 +15,35 @@ fs.readFile('./data/poems.json', "utf-8", (err, data) => {
     console.log("Data loaded!")
 })
 
-router.get("/", (req, res) => {
-    res.json(poems);
+router.get("/", (req, res, next) => {
+    //res.json(poems);
+    Recipes.find({}, (err, recipes) => {
+        if (err) return next(err);
+        if (recipes) {
+            return res.json(recipes);
+        } else {
+            return res.status(404).send("Not found")
+        }
+    })
 
 })
 
-router.get("/:id", (req, res) => {
-    res.json(poems[req.params.id]);
+router.get("/:id", (req, res, next) => {
+    //res.json(poems[req.params.id]);
+    Recipes.findById( req.params.id, (err, recipes) => {
+        if (err) {
+            if (err.name === "CastError") {
+                return res.status(404).send(`Recipe id ${req.params.id} not found!`);
+            }
+            return next(err);
+        }
+        if (recipes) {
+            return res.send(recipes);
+        } else {
+            return res.status(404).send(`Recipe id ${req.params.id} not found!`);
+        }
+
+    })
 
 })
 

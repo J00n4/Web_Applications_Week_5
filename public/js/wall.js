@@ -77,8 +77,8 @@ function initializeCode() {
            .then(data => {
                console.log(data);
                hField.append(data.name);
-               tField.append(data.instructions);
-               tField2.append(data.ingredients);
+               tField.append(data.ingredients);
+               tField2.append(data.instructions);
            })
     })
 
