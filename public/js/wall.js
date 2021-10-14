@@ -88,10 +88,11 @@ function initializeCode() {
     });
 
     const searchInput = document.getElementById("search");
-    searchInput.addEventListener("keypress", function(e) {
+    searchInput.addEventListener("keyup", function(e) {
         //document.getElementById("test-header").innerText = searchInput.value;
         //var test_input = searchInput.value;
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
             //var test_input = searchInput.value;
             //document.getElementById("test-header").innerText = "/recipe/" + test_input;
             fetch("/recipe/" + searchInput.value)
