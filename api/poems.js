@@ -173,10 +173,10 @@ router.post("/recipe/", (req, res, next) => {
 
 router.get("/", (req, res, next) => {
     //res.json(recipes);
-    Category.find({}, (err, recipes) => {
+    Category.find({}, (err, categories) => {
         if (err) return next(err);
-        if (recipes) {
-            return res.json(recipes.categories);
+        if (categories) {
+            return res.json(categories);
         } else {
             return res.status(404).send("Not found")
         }
@@ -192,7 +192,7 @@ router.post("/", (req, res, next) => {
                 name: req.body.name
             }).save((err) => {
                 if(err) return next(err);
-                return res.send(req.body);
+                return res.send(req.body.categories);
             });
         } else {
             return res.status(403).send("Already has that diet!");
