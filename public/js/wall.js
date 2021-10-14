@@ -82,6 +82,25 @@ function initializeCode() {
            })
     })
 
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, options);
+    });
+
+    const searchInput = document.getElementById("search");
+    searchInput.addEventListener("keyup", function(e) {
+        if (e.key === 'Enter') {
+            //document.getElementById("test-header").innerText = searchInput.data;
+            fetch("/recipe/" + searchInput.data)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("test-header").innerText = data.name;
+                    document.getElementById("test-area").innerText = data.instructions;
+                    document.getElementById("test-area2").innerText = data.ingredients;
+                })
+        }
+    });
+
     /*const elems = document.querySelectorAll('.sidenav');
     const instances = M.Sidenav.init(elems, options);
 

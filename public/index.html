@@ -1,20 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="js/wall.js"></script>
-</head>
-<body>
-    <h3 id="test-header"></h3>
-    <input type="text" id="name-text"></input>
-    <h4>Ingredients</h4>
-    <p id="test-area"></p>
-    <textarea id="ingredients-text"></textarea>
-    <button id="add-ingredient" type="button">Add ingredient</button>
-    <h4>Instructions</h4>
-    <p id="test-area2"></p>
-    <textarea id="instructions-text"></textarea>
-    <button id="add-instruction" type="button">Add instructions</button>
-    <button id="submit" type="button">Submit</button>
 
-</body>
+    <!-- Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Import materialize.css -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+
+    <!-- Let browser know website is optimized for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script src="js/wall.js"></script>
+</head>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Logo</a>
+        <form>
+            <div class="input-field" style="max-width: 400px;">
+                <input id="search" type="search"></input>
+                <label class="label-icon" for="search">search</label>
+            </div>
+        </form>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="wall.html">Wall</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <body>
+        <div class="col">
+            <h3 id="test-header"></h3>
+            <h4>Ingredients</h4>
+            <p id="test-area"></p>
+            <h4>Instructions</h4>
+            <p id="test-area2"></p>
+        </div>
+        
+        <div class="col">
+            <p>Name:</p>
+            <input type="text" id="name-text"></input>
+            <textarea id="ingredients-text"></textarea>
+            <button class="btn" id="add-ingredient" type="button">Add ingredient</button>
+            <textarea id="instructions-text"></textarea>
+            <button class="btn" id="add-instruction" type="button">Add instructions</button>
+            <button class="btn" id="submit" type="button">Submit</button>
+        </div>
+
+        <!-- Javascript at end of body for optimized loading -->
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+</div>
 </html>
