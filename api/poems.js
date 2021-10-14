@@ -144,7 +144,8 @@ router.post("/recipe/", (req, res, next) => {
             new Recipe({
                 name: req.body.name,
                 instructions: req.body.instructions,
-                ingredients: req.body.ingredients
+                ingredients: req.body.ingredients,
+                categories: req.body.categories
             }).save((err) => {
                 if(err) return next(err);
                 recipes.push(req.body);
