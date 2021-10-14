@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Recipe = require("../models/Recipes");
+const Category = require("../models/category")
 const router = express.Router();
 //const fs = require("fs");
 
@@ -168,6 +169,36 @@ router.post("/recipe/", (req, res, next) => {
     //console.log("Poem: " + JSON.stringify(req.body) + " added!");
 }) 
 
+
+
+router.get("/", (req, res, next) => {
+    //res.json(recipes);
+    Category.find({}, (err, recipes) => {
+        if (err) return next(err);
+        if (recipes) {
+            return res.json(recipes.categories);
+        } else {
+            return res.status(404).send("Not found")
+        }
+    })
+
+})
+
+router.post("/", (req, res, next) => {
+    Category.findOne({ name: req.body.name}, (err, name) => {
+        if(err) return next(err);
+        if(!name) {
+            new Category({
+                name: req.body.name
+            }).save((err) => {
+                if(err) return next(err);
+                return res.send(req.body);
+            });
+        } else {
+            return res.status(403).send("Already has that diet!");
+        }
+    });
+})
 
 
 module.exports = router;
