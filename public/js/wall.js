@@ -88,16 +88,20 @@ function initializeCode() {
     });
 
     const searchInput = document.getElementById("search");
-    searchInput.addEventListener("keyup", function(e) {
+    searchInput.addEventListener("keypress", function(e) {
+        //document.getElementById("test-header").innerText = searchInput.value;
+        //var test_input = searchInput.value;
         if (e.key === 'Enter') {
-            //document.getElementById("test-header").innerText = searchInput.data;
-            fetch("/recipe/" + searchInput.data)
+            //var test_input = searchInput.value;
+            //document.getElementById("test-header").innerText = "/recipe/" + test_input;
+            fetch("/recipe/" + searchInput.value)
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById("test-header").innerText = data.name;
                     document.getElementById("test-area").innerText = data.instructions;
                     document.getElementById("test-area2").innerText = data.ingredients;
                 })
+            //document.getElementById("test-header").innerText = test_input;
         }
     });
 
