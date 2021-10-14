@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 let recipeSchema = new Schema({
     name: String,
     instructions: [String],
-    ingredients: [String]
+    ingredients: [String],
+    categories: []
 });
 
 module.exports = mongoose.model("Recipes", recipeSchema);

@@ -68,3 +68,8 @@ ul#the-wall li:nth-of-type(6n) {
     font-size: 1.1em;
 
 }
+
+
+#checkbox1 {
+    color: #ccc;
+}

@@ -34,6 +34,7 @@ function initializeCode() {
     var ingredientsList = [];
     var instructionsList = [];
     var name = "";
+    var checkList = [];
 
     addIngredientsButton.addEventListener("click", function() {
         const ingredientInput = document.getElementById("ingredients-text").value;
@@ -59,6 +60,17 @@ function initializeCode() {
         var tField = document.getElementById("test-area");
         var tField2 = document.getElementById("test-area2");
         //hField.append(nameInput.value);
+        const diet1 = document.getElementById("check1");
+        const diet2 = document.getElementById("check2");
+        const diet3 = document.getElementById("check3");
+
+        if(diet1.checked) {
+            checkList.push(diet1.id);
+        } if(diet2.checked) {
+            checkList.push(diet2.id);
+        } if(diet3.checked) {
+            checkList.push(diet3.id);
+        }
 
         fetch("/recipe/", {
             method: "post",
@@ -68,7 +80,8 @@ function initializeCode() {
             body: JSON.stringify({
                 name: nameInput.value,
                 instructions: instructionsList,
-                ingredients: ingredientsList
+                ingredients: ingredientsList,
+                categories: checkList
             })
             //body: '{ "name": "' + nameInput.value + '"instructions": "' + JSON.stringify(instructionsList) + '" "ingredients": "' + JSON.stringify(ingredientsList) + '"  }'
             //body: '{ "name": "' + nameInput + ' "instructions": "' + instructionsList + '" "ingredients": "' + ingredientsList + '" }'
@@ -105,6 +118,8 @@ function initializeCode() {
             //document.getElementById("test-header").innerText = test_input;
         }
     });
+
+
 
     /*const elems = document.querySelectorAll('.sidenav');
     const instances = M.Sidenav.init(elems, options);

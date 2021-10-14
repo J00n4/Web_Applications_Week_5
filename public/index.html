@@ -8,6 +8,8 @@
     <!-- Import materialize.css -->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet" />
+
     <!-- Let browser know website is optimized for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -43,6 +45,21 @@
             <button class="btn" id="add-ingredient" type="button">Add ingredient</button>
             <textarea id="instructions-text"></textarea>
             <button class="btn" id="add-instruction" type="button">Add instructions</button>
+            <fieldset>
+                <legend>Categories</legend>
+                <div>
+                    <input type="checkbox" id="check1" checked>
+                    <label for="check1">Gluten-free</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="check2">
+                    <label for="check2">vegan</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="check3">
+                    <label for="check3">Ovo</label>
+                </div>
+            </fieldset>
             <button class="btn" id="submit" type="button">Submit</button>
         </div>
 
