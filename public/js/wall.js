@@ -122,7 +122,7 @@ function initializeCode() {
     });
 
 
-    var MongoClient = require('mongodb').MongoClient;
+    /*var MongoClient = require('mongodb').MongoClient;
     var url = "mongodb://localhost:27017/testdb";
 
     MongoClient.connect(url, function(err, db) {
@@ -138,7 +138,7 @@ function initializeCode() {
             }
             db.close();
         });
-    });
+    });*/
 
 
 
