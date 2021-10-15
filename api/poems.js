@@ -46,9 +46,9 @@ let recipes = [
 
 });*/
 
-router.get("/", (req, res) => {
+/*router.get("/", (req, res) => {
     res.json(recipes);
-});
+});*/
 
 //app.use("/api/poems", require("./api/poems.js"));
 
@@ -179,6 +179,7 @@ router.get("/", (req, res, next) => {
             //res.send(name);
             for (i = 0; i < result.length; i++) {
                 const box = document.getElementById("check" + (i+1));
+                box.innerText = result[i];
                 box.setAttribute("id", result[(i+1)]);
             }
             //const box1 = document.getElementById("check1");
