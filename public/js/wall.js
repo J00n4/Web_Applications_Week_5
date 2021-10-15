@@ -60,7 +60,9 @@ function initializeCode() {
         var tField = document.getElementById("test-area");
         var tField2 = document.getElementById("test-area2");
         //hField.append(nameInput.value);
-        const diet1 = document.getElementById("check1");
+        
+        
+        /*const diet1 = document.getElementById("check1");
         const diet2 = document.getElementById("check2");
         const diet3 = document.getElementById("check3");
 
@@ -70,7 +72,7 @@ function initializeCode() {
             checkList.push(diet2.id);
         } if(diet3.checked) {
             checkList.push(diet3.id);
-        }
+        }*/
 
         fetch("/recipe/", {
             method: "post",
@@ -117,6 +119,25 @@ function initializeCode() {
                 })
             //document.getElementById("test-header").innerText = test_input;
         }
+    });
+
+
+    var MongoClient = require('mongodb').MongoClient;
+    var url = "mongodb://localhost:27017/testdb";
+
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("mydb");
+        dbo.collection("categories").find({}, { projection: { _id: 1, name: 1 } }).toArray(function(err, result) {
+            if (err) throw err;
+            console.log(result);
+            for (i = 0; i < result.length; i++) {
+                const box = document.getElementById("check" + (i+1));
+                document.getElementById("test-area2").innerText = result[i].name;
+                box.setAttribute("id", result[(i+1)]._id);
+            }
+            db.close();
+        });
     });
 
 
