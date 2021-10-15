@@ -173,10 +173,17 @@ router.post("/recipe/", (req, res, next) => {
 
 router.get("/", (req, res, next) => {
     //res.json(recipes);
-    Category.find({}, (err, categories) => {
+    Category.find({}, { projection: { _id: 1 } }).toArray((err, result) => {
         if (err) return next(err);
-        if (categories) {
-            return res.json(categories);
+        if (result) {
+            //res.send(name);
+            for (i = 0; i < result.length; i++) {
+                const box = document.getElementById("check" + (i+1));
+                box.setAttribute("id", result[(i+1)]);
+            }
+            //const box1 = document.getElementById("check1");
+            //box1.setAttribute("id", result)
+            return res.json(result);
         } else {
             return res.status(404).send("Not found")
         }
