@@ -141,6 +141,8 @@ router.get("/", (req, res, next) => {
                 newItem.setAttribute("type", "checkbox");
                 newItem.innerText = result[i].name;
                 newCategory.appendChild(newItem);
+                const newAppend = document.getElementById("category-list");
+                newAppend.appendChild(newCategory);
             }
             //const box1 = document.getElementById("check1");
             //box1.setAttribute("id", result)
