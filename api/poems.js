@@ -19,9 +19,9 @@ let poems = [];
 
 
 let recipes = [
-    {name: "pizza", instructions: "instructions", ingredients: "ingredients"},
-    {name: "pasta", instructions: "instructions", ingredients: "ingredients"},
-    {name: "potatoes", instructions: "instructions", ingredients: "ingredients"}
+    {name: "pizza", instructions: "instructions", ingredients: "ingredients", categories: ""},
+    {name: "pasta", instructions: "instructions", ingredients: "ingredients", categories: ""},
+    {name: "potatoes", instructions: "instructions", ingredients: "ingredients", categories: ""}
 ];
 
 /*router.get("/recipe/:food", (req, res) => {
@@ -114,7 +114,8 @@ router.post("/", (req, res, next) => {
                 name: req.body.name
             }).save((err) => {
                 if(err) return next(err);
-                return res.send(req.body.categories);
+                recipes.categories.push(req.body.name);
+                return res.send(req.body);
             });
         } else {
             return res.status(403).send("Already has that diet!");
