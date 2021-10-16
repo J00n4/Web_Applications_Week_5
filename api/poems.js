@@ -182,8 +182,11 @@ router.get("/", (req, res, next) => {
                 document.getElementById("test-area2").innerText = result[i].name;
                 box.setAttribute("id", result[(i+1)]._id);
                 const newCategory = document.createElement("div");
-                newCategory.setAttribute("id", result[(i+1)]._id);
-                newCategory.innerText = result[(i+1)].name;
+                const newItem = document.createElement("input");
+                newItem.setAttribute("id", result[(i+1)]._id);
+                newItem.setAttribute("type", "checkbox");
+                newItem.innerText = result[(i+1)].name;
+                newCategory.appendChild(newItem);
             }
             //const box1 = document.getElementById("check1");
             //box1.setAttribute("id", result)
