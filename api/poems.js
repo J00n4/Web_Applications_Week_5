@@ -133,10 +133,11 @@ router.get("/", (req, res, next) => {
             for (i = 0; i < result.length; i++) {
                 const box = document.getElementById("check" + (i+1));
                 document.getElementById("test-area2").innerText = result[i].name;
-                box.setAttribute("id", result[i]._id);
+                var attribute = result[i]._id.toString();
+                box.setAttribute("id", attribute);
                 const newCategory = document.createElement("div");
                 const newItem = document.createElement("input");
-                newItem.setAttribute("id", result[i]._id);
+                newItem.setAttribute("id", attribute);
                 newItem.setAttribute("type", "checkbox");
                 newItem.innerText = result[i].name;
                 newCategory.appendChild(newItem);
