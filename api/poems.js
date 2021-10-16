@@ -130,6 +130,7 @@ router.get("/", (req, res, next) => {
         if (err) return next(err);
         if (result) {
             //res.send(name);
+            console.log(result);
             for (i = 0; i < result.length; i++) {
                 const box = document.getElementById("check" + (i+1));
                 document.getElementById("test-area2").innerText = result[i].name;
