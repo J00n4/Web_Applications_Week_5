@@ -106,6 +106,52 @@ Tehtävä 2 loppuu*/
 });*/
 
 
+router.post("/", (req, res, next) => {
+    Category.findOne({ name: req.body.name}, (err, name) => {
+        if(err) return next(err);
+        if(!name) {
+            new Category({
+                name: req.body.name
+            }).save((err) => {
+                if(err) return next(err);
+                return res.send(req.body.categories);
+            });
+        } else {
+            return res.status(403).send("Already has that diet!");
+        }
+    });
+})
+
+
+router.get("/", (req, res, next) => {
+    //res.json(recipes);
+    Category.find({}, { projection: { _id: 1, name: 1 } }).toArray((err, result) => {
+        if (err) return next(err);
+        if (result) {
+            //res.send(name);
+            for (i = 0; i < result.length; i++) {
+                const box = document.getElementById("check" + (i+1));
+                document.getElementById("test-area2").innerText = result[i].name;
+                box.setAttribute("id", result[(i+1)]._id);
+                const newCategory = document.createElement("div");
+                const newItem = document.createElement("input");
+                newItem.setAttribute("id", result[(i+1)]._id);
+                newItem.setAttribute("type", "checkbox");
+                newItem.innerText = result[(i+1)].name;
+                newCategory.appendChild(newItem);
+            }
+            //const box1 = document.getElementById("check1");
+            //box1.setAttribute("id", result)
+            return res.json(result);
+        } else {
+            return res.status(404).send("Not found")
+        }
+    })
+
+})
+
+
+
 router.get("/recipe/", (req, res, next) => {
     //res.json(recipes);
     Recipe.find({}, (err, recipes) => {
@@ -169,50 +215,6 @@ router.post("/recipe/", (req, res, next) => {
     //console.log("Poem: " + JSON.stringify(req.body) + " added!");
 }) 
 
-
-
-router.get("/", (req, res, next) => {
-    //res.json(recipes);
-    Category.find({}, { projection: { _id: 1, name: 1 } }).toArray((err, result) => {
-        if (err) return next(err);
-        if (result) {
-            //res.send(name);
-            for (i = 0; i < result.length; i++) {
-                const box = document.getElementById("check" + (i+1));
-                document.getElementById("test-area2").innerText = result[i].name;
-                box.setAttribute("id", result[(i+1)]._id);
-                const newCategory = document.createElement("div");
-                const newItem = document.createElement("input");
-                newItem.setAttribute("id", result[(i+1)]._id);
-                newItem.setAttribute("type", "checkbox");
-                newItem.innerText = result[(i+1)].name;
-                newCategory.appendChild(newItem);
-            }
-            //const box1 = document.getElementById("check1");
-            //box1.setAttribute("id", result)
-            return res.json(result);
-        } else {
-            return res.status(404).send("Not found")
-        }
-    })
-
-})
-
-router.post("/", (req, res, next) => {
-    Category.findOne({ name: req.body.name}, (err, name) => {
-        if(err) return next(err);
-        if(!name) {
-            new Category({
-                name: req.body.name
-            }).save((err) => {
-                if(err) return next(err);
-                return res.send(req.body.categories);
-            });
-        } else {
-            return res.status(403).send("Already has that diet!");
-        }
-    });
-})
 
 
 module.exports = router;
