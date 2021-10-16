@@ -178,9 +178,9 @@ router.get("/", (req, res, next) => {
         if (result) {
             //res.send(name);
             for (i = 0; i < result.length; i++) {
-                //const box = document.getElementById("check" + (i+1));
-                //document.getElementById("test-area2").innerText = result[i].name;
-                //box.setAttribute("id", result[(i+1)]._id);
+                const box = document.getElementById("check" + (i+1));
+                document.getElementById("test-area2").innerText = result[i].name;
+                box.setAttribute("id", result[(i+1)]._id);
                 const newCategory = document.createElement("div");
                 newCategory.setAttribute("id", result[(i+1)]._id);
                 newCategory.innerText = result[(i+1)].name;
