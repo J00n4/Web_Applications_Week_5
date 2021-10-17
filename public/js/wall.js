@@ -62,9 +62,9 @@ function initializeCode() {
         //hField.append(nameInput.value);
         
         
-        /*const diet1 = document.getElementById("check1");
-        const diet2 = document.getElementById("check2");
-        const diet3 = document.getElementById("check3");
+        const diet1 = document.getElementById("615563d176423d721f6fa719");
+        const diet2 = document.getElementById("615563d176423d721f6fa71a");
+        const diet3 = document.getElementById("615563d176423d721f6fa71b");
 
         if(diet1.checked) {
             checkList.push(diet1.id);
@@ -72,7 +72,7 @@ function initializeCode() {
             checkList.push(diet2.id);
         } if(diet3.checked) {
             checkList.push(diet3.id);
-        }*/
+        }
 
         fetch("/recipe/", {
             method: "post",
