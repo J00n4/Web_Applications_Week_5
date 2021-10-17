@@ -86,25 +86,11 @@ function initializeCode() {
         })
         .then(response => response.json())
         .then(data => {
-            /*const newField = document.createElement("input");
+            const newField = document.createElement("input");
             newField.setAttribute("type", "checkbox");
             newField.innerText(data.name);
-            dietField.appendChild(newField);*/
+            dietField.appendChild(newField);
 
-            for (i = 0; i < data.length; i++) {
-                //const box = document.getElementById("check" + (i+1));
-                //document.getElementById("test-area2").innerText = result[i].name;
-                var attribute = data[i]._id.toString();
-                //box.setAttribute("id", attribute);
-                const newCategory = document.createElement("div");
-                const newItem = document.createElement("input");
-                newItem.setAttribute("id", attribute);
-                newItem.setAttribute("type", "checkbox");
-                newItem.innerText = data[i].name;
-                newCategory.appendChild(newItem);
-                const newAppend = document.getElementById("category-list");
-                newAppend.appendChild(newCategory);
-            }
         })
 
         fetch("/recipe/", {
