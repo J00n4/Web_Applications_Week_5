@@ -107,7 +107,7 @@ Tehtävä 2 loppuu*/
 });*/
 
 
-router.post("/recipe/", (req, res, next) => {
+router.post("/", (req, res, next) => {
     Category.findOne({ name: req.body.name}, (err, name) => {
         if(err) return next(err);
         if(!name) {
