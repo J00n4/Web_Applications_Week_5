@@ -133,10 +133,10 @@ router.get("/", (req, res, next) => {
             //res.send(name);
             console.log(result);
             for (i = 0; i < result.length; i++) {
-                const box = document.getElementById("check" + (i+1));
-                document.getElementById("test-area2").innerText = result[i].name;
+                //const box = document.getElementById("check" + (i+1));
+                //document.getElementById("test-area2").innerText = result[i].name;
                 var attribute = result[i]._id.toString();
-                box.setAttribute("id", attribute);
+                //box.setAttribute("id", attribute);
                 const newCategory = document.createElement("div");
                 const newItem = document.createElement("input");
                 newItem.setAttribute("id", attribute);
