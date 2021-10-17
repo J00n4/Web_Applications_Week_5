@@ -121,7 +121,7 @@ router.post("/", (req, res, next) => {
             }).save((err) => {
                 if(err) return next(err);
                 categories.push(req.body);
-                recipes.categories.push(req.body._id);
+                //recipes.categories.push(req.body.name);
                 return res.send(req.body);
             });
         } else {
@@ -141,13 +141,13 @@ router.get("/", (req, res, next) => {
             for (i = 0; i < result.length; i++) {
                 //const box = document.getElementById("check" + (i+1));
                 //document.getElementById("test-area2").innerText = result[i].name;
-                var attribute = toString(result[i]._id);
+                var attribute = result[i]._id.toString();
                 //box.setAttribute("id", attribute);
                 const newCategory = document.createElement("div");
                 const newItem = document.createElement("input");
                 newItem.setAttribute("id", attribute);
                 newItem.setAttribute("type", "checkbox");
-                newItem.innerText = toString(result[i].name);
+                newItem.innerText = result[i].name;
                 newCategory.appendChild(newItem);
                 const newAppend = document.getElementById("category-list");
                 newAppend.appendChild(newCategory);
