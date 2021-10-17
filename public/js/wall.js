@@ -62,7 +62,7 @@ function initializeCode() {
         //hField.append(nameInput.value);
         
         
-        const diet1 = document.getElementById("check1");
+        /*const diet1 = document.getElementById("check1");
         const diet2 = document.getElementById("check2");
         const diet3 = document.getElementById("check3");
 
@@ -72,7 +72,7 @@ function initializeCode() {
             checkList.push(diet2.id);
         } if(diet3.checked) {
             checkList.push(diet3.id);
-        }
+        }*/
 
         fetch("/recipe/", {
             method: "post",
