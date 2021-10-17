@@ -35,6 +35,7 @@ function initializeCode() {
     var instructionsList = [];
     var name = "";
     var checkList = [];
+    var categoriesList = [];
 
     addIngredientsButton.addEventListener("click", function() {
         const ingredientInput = document.getElementById("ingredients-text").value;
@@ -61,6 +62,12 @@ function initializeCode() {
         var tField2 = document.getElementById("test-area2");
         //hField.append(nameInput.value);
         
+        for (i=0; i<checkList.length; i++) {
+            const aButton = document.getElementById(checkList[i]);
+            if (aButton.checked == true) {
+                categoriesList.push(checkList[i]);
+            }
+        }
 
         fetch("/recipe/", {
             method: "post",
@@ -71,7 +78,7 @@ function initializeCode() {
                 name: nameInput.value,
                 instructions: instructionsList,
                 ingredients: ingredientsList,
-                categories: checkList
+                categories: categoriesList
             })
             //body: '{ "name": "' + nameInput.value + '"instructions": "' + JSON.stringify(instructionsList) + '" "ingredients": "' + JSON.stringify(ingredientsList) + '"  }'
             //body: '{ "name": "' + nameInput + ' "instructions": "' + instructionsList + '" "ingredients": "' + ingredientsList + '" }'
@@ -131,11 +138,9 @@ function initializeCode() {
             newCategory.appendChild(newLabel);
             const newAppend = document.getElementById("category-list");
             newAppend.appendChild(newCategory);
-            //document.getElementById("testaukseen").innerText = data.length;
-
-            if (newLabel.checked == true) {
-                checkList.append(data[i]._id);
-            }
+            //document.getElementById("testaukseen").innerText = JSON.stringify(data);
+            checkList.push(data[i]._id);
+            //document.getElementById("testaukseen").innerText = checkList[i];
 
         }
     })

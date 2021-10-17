@@ -17,12 +17,6 @@ let poems = [];
     console.log("Data loaded!")
 })*/
 
-let categories = [
-    {name: "Gluten-free"},
-    {name: "vegan"},
-    {name: "Ovo"},
-];
-
 
 let recipes = [
     {name: "pizza", instructions: "instructions", ingredients: "ingredients", categories: ""},
@@ -114,6 +108,7 @@ Tehtävä 2 loppuu*/
 
 
 router.post("/", (req, res, next) => {
+    Category.remove({});
     Category.find({}, (err, categories) => {
         if (err) return next(err);
         if (categories) {
@@ -145,7 +140,7 @@ router.get("/", (req, res, next) => {
         {name: "Vegan"},
         {name: "Ovo"}
     );*/
-    /*Category.deleteMany({});*/
+    
     return res.json(recipes);
     //res.json(recipes);
     //Category.find({}, { projection: { _id: 1, name: 1 } }).toArray((err, result) => {
