@@ -108,7 +108,6 @@ Tehtävä 2 loppuu*/
 
 
 router.post("/", (req, res, next) => {
-    Category.remove({});
     Category.find({}, (err, categories) => {
         if (err) return next(err);
         if (categories) {
@@ -140,7 +139,7 @@ router.get("/", (req, res, next) => {
         {name: "Vegan"},
         {name: "Ovo"}
     );*/
-    
+    //Category.remove({});
     return res.json(recipes);
     //res.json(recipes);
     //Category.find({}, { projection: { _id: 1, name: 1 } }).toArray((err, result) => {
