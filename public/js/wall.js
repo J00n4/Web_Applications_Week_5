@@ -61,53 +61,6 @@ function initializeCode() {
         var tField2 = document.getElementById("test-area2");
         //hField.append(nameInput.value);
         
-        
-        const diet1 = document.getElementById("check1");
-        const diet2 = document.getElementById("check2");
-        const diet3 = document.getElementById("check3");
-        const dietField = document.getElementById("category-list");
-
-        /*if(diet1.checked) {
-            checkList.push(diet1.id);
-        } if(diet2.checked) {
-            checkList.push(diet2.id);
-        } if(diet3.checked) {
-            checkList.push(diet3.id);
-        }*/
-
-        fetch("/", {
-            method: "post",
-            headers: {
-                "Content-type": "application/json"
-            }/*,
-            body: JSON.stringify({
-                name: categories
-            })*/
-        })
-        .then(response => response.json())
-        .then(data => {
-            /*const newField = document.createElement("input");
-            newField.setAttribute("type", "checkbox");
-            newField.innerText = data.name;
-            dietField.appendChild(newField);*/
-
-            for (i = 0; i < data.length; i++) {
-                //const box = document.getElementById("check" + (i+1));
-                //document.getElementById("test-area2").innerText = result[i].name;
-                var attribute = toString(data[i]._id);
-                //box.setAttribute("id", attribute);
-                const newCategory = document.createElement("div");
-                const newItem = document.createElement("input");
-                const newLabel = document.createElement("label");
-                newItem.setAttribute("id", attribute);
-                newItem.setAttribute("type", "checkbox");
-                newLabel.setAttribute("for", attribute);
-                newLabel.innerText = data[i].name;
-                newCategory.appendChild(newItem);
-                const newAppend = document.getElementById("category-list");
-                newAppend.appendChild(newCategory);
-            }
-        })
 
         fetch("/recipe/", {
             method: "post",
@@ -131,6 +84,63 @@ function initializeCode() {
                tField2.append(data.instructions);
            })
     })
+
+
+    const diet1 = document.getElementById("check1");
+    const diet2 = document.getElementById("check2");
+    const diet3 = document.getElementById("check3");
+    const dietField = document.getElementById("category-list");
+
+    /*if(diet1.checked) {
+        checkList.push(diet1.id);
+    } if(diet2.checked) {
+        checkList.push(diet2.id);
+    } if(diet3.checked) {
+        checkList.push(diet3.id);
+    }*/
+
+    fetch("/", {
+        method: "post",
+        headers: {
+            "Content-type": "application/json"
+        }/*,
+        body: JSON.stringify({
+            name: categories.name
+        })*/
+    })
+    .then(response => response.json())
+    .then(data => {
+        /*const newField = document.createElement("input");
+        newField.setAttribute("type", "checkbox");
+        newField.innerText = data.name;
+        dietField.appendChild(newField);*/
+
+        for (i = 0; i < data.length; i++) {
+            //const box = document.getElementById("check" + (i+1));
+            //document.getElementById("test-area2").innerText = result[i].name;
+            var attribute = data[i]._id;
+            //box.setAttribute("id", attribute);
+            const newCategory = document.createElement("div");
+            const newItem = document.createElement("input");
+            const newLabel = document.createElement("label");
+            newItem.setAttribute("id", attribute);
+            newItem.setAttribute("type", "checkbox");
+            newLabel.setAttribute("for", attribute);
+            newLabel.innerText = data[i].name;
+            newCategory.appendChild(newItem);
+            newCategory.appendChild(newLabel);
+            const newAppend = document.getElementById("category-list");
+            newAppend.appendChild(newCategory);
+            //document.getElementById("testaukseen").innerText = data.length;
+
+            if (newLabel.checked == true) {
+                checkList.append(data[i]._id);
+            }
+
+        }
+    })
+
+
 
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.sidenav');

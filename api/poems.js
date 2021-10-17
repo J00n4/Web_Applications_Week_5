@@ -112,8 +112,17 @@ Tehtävä 2 loppuu*/
 });*/
 
 
+
 router.post("/", (req, res, next) => {
-    Category.findOne({ name: req.body.name}, (err, name) => {
+    Category.find({}, (err, categories) => {
+        if (err) return next(err);
+        if (categories) {
+            return res.json(categories);
+        } else {
+            return res.status(404).send("Not found")
+        }
+    })
+    /*Category.findOne({ name: req.body.name}, (err, name) => {
         if(err) return next(err);
         if(!name) {
             new Category({
@@ -126,18 +135,37 @@ router.post("/", (req, res, next) => {
         } else {
             return res.status(403).send("Already has that diet!");
         }
-    });
+    });*/
 })
 
 
 router.get("/", (req, res, next) => {
+    /*Category.insertMany(
+        {name: "Gluten-free"},
+        {name: "Vegan"},
+        {name: "Ovo"}
+    );*/
+    /*Category.deleteMany({});*/
+    return res.json(recipes);
     //res.json(recipes);
-    Category.find({}, { projection: { _id: 1, name: 1 } }).toArray((err, result) => {
+    //Category.find({}, { projection: { _id: 1, name: 1 } }).toArray((err, result) => {
+    
+    
+    /*Category.find({}, (err, categories) => {
         if (err) return next(err);
+        if (categories) {
+            return res.json(categories);
+        } else {
+            return res.status(404).send("Not found")
+        }
+    })*/
+    
+    
+    /*if (err) return next(err);
         if (result) {
             //res.send(name);
             console.log(result);
-            /*for (i = 0; i < result.length; i++) {
+            for (i = 0; i < result.length; i++) {
                 //const box = document.getElementById("check" + (i+1));
                 //document.getElementById("test-area2").innerText = result[i].name;
                 var attribute = result[i]._id.toString();
@@ -150,14 +178,14 @@ router.get("/", (req, res, next) => {
                 newCategory.appendChild(newItem);
                 const newAppend = document.getElementById("category-list");
                 newAppend.appendChild(newCategory);
-            }*/
+            }
             //const box1 = document.getElementById("check1");
             //box1.setAttribute("id", result)
             return res.json(result);
         } else {
             return res.status(404).send("Not found")
         }
-    })
+    })*/
 
 })
 
