@@ -153,7 +153,7 @@ router.get("/", (req, res, next) => {
             }
             //const box1 = document.getElementById("check1");
             //box1.setAttribute("id", result)
-            return res.json(categories);
+            return res.json(result);
         } else {
             return res.status(404).send("Not found")
         }

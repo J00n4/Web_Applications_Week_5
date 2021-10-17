@@ -62,9 +62,9 @@ function initializeCode() {
         //hField.append(nameInput.value);
         
         
-        const diet1 = document.getElementById("615563d176423d721f6fa719");
-        const diet2 = document.getElementById("615563d176423d721f6fa71a");
-        const diet3 = document.getElementById("615563d176423d721f6fa71b");
+        const diet1 = document.getElementById("check1");
+        const diet2 = document.getElementById("check2");
+        const diet3 = document.getElementById("check3");
 
         if(diet1.checked) {
             checkList.push(diet1.id);
