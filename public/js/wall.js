@@ -94,7 +94,7 @@ function initializeCode() {
             for (i = 0; i < data.length; i++) {
                 //const box = document.getElementById("check" + (i+1));
                 //document.getElementById("test-area2").innerText = result[i].name;
-                var attribute = data[i]._id.toString();
+                var attribute = toString(data[i]._id);
                 //box.setAttribute("id", attribute);
                 const newCategory = document.createElement("div");
                 const newItem = document.createElement("input");
