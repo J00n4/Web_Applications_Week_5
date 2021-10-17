@@ -121,7 +121,7 @@ router.post("/", (req, res, next) => {
             }).save((err) => {
                 if(err) return next(err);
                 categories.push(req.body);
-                recipes.categories.push(req.body.name);
+                //recipes.categories.push(req.body.name);
                 return res.send(req.body);
             });
         } else {

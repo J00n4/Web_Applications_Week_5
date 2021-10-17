@@ -79,10 +79,10 @@ function initializeCode() {
             method: "post",
             headers: {
                 "Content-type": "application/json"
-            },
+            }/*,
             body: JSON.stringify({
                 name: categories.name
-            })
+            })*/
         })
         .then(response => response.json())
         .then(data => {
