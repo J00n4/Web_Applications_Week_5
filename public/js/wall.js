@@ -67,13 +67,13 @@ function initializeCode() {
         const diet3 = document.getElementById("check3");
         const dietField = document.getElementById("category-list");
 
-        if(diet1.checked) {
+        /*if(diet1.checked) {
             checkList.push(diet1.id);
         } if(diet2.checked) {
             checkList.push(diet2.id);
         } if(diet3.checked) {
             checkList.push(diet3.id);
-        }
+        }*/
 
         fetch("/", {
             method: "post",
@@ -98,9 +98,11 @@ function initializeCode() {
                 //box.setAttribute("id", attribute);
                 const newCategory = document.createElement("div");
                 const newItem = document.createElement("input");
+                const newLabel = document.createElement("label");
                 newItem.setAttribute("id", attribute);
                 newItem.setAttribute("type", "checkbox");
-                newItem.innerText = data[i].name;
+                newLabel.setAttribute("for", attribute);
+                newLabel.innerText = data[i].name;
                 newCategory.appendChild(newItem);
                 const newAppend = document.getElementById("category-list");
                 newAppend.appendChild(newCategory);
