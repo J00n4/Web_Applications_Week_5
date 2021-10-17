@@ -65,6 +65,7 @@ function initializeCode() {
         const diet1 = document.getElementById("check1");
         const diet2 = document.getElementById("check2");
         const diet3 = document.getElementById("check3");
+        const dietField = document.getElementById("category-list");
 
         if(diet1.checked) {
             checkList.push(diet1.id);
@@ -73,6 +74,38 @@ function initializeCode() {
         } if(diet3.checked) {
             checkList.push(diet3.id);
         }
+
+        fetch("/", {
+            method: "post",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                name: categories.name
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            /*const newField = document.createElement("input");
+            newField.setAttribute("type", "checkbox");
+            newField.innerText(data.name);
+            dietField.appendChild(newField);*/
+
+            for (i = 0; i < data.length; i++) {
+                //const box = document.getElementById("check" + (i+1));
+                //document.getElementById("test-area2").innerText = result[i].name;
+                var attribute = data[i]._id.toString();
+                //box.setAttribute("id", attribute);
+                const newCategory = document.createElement("div");
+                const newItem = document.createElement("input");
+                newItem.setAttribute("id", attribute);
+                newItem.setAttribute("type", "checkbox");
+                newItem.innerText = data[i].name;
+                newCategory.appendChild(newItem);
+                const newAppend = document.getElementById("category-list");
+                newAppend.appendChild(newCategory);
+            }
+        })
 
         fetch("/recipe/", {
             method: "post",
