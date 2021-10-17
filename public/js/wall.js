@@ -88,7 +88,7 @@ function initializeCode() {
         .then(data => {
             const newField = document.createElement("input");
             newField.setAttribute("type", "checkbox");
-            newField.innerText(data.name);
+            newField.innerText = data.name;
             dietField.appendChild(newField);
         })
 
