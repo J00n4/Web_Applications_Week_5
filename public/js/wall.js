@@ -75,13 +75,13 @@ function initializeCode() {
             checkList.push(diet3.id);
         }
 
-        fetch("/", {
+        /*fetch("/", {
             method: "post",
             headers: {
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
-                name: categories.name
+                name: categories
             })
         })
         .then(response => response.json())
@@ -90,7 +90,7 @@ function initializeCode() {
             newField.setAttribute("type", "checkbox");
             newField.innerText(data.name);
             dietField.appendChild(newField);
-        })
+        })*/
 
         fetch("/recipe/", {
             method: "post",
