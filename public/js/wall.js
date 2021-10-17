@@ -90,7 +90,6 @@ function initializeCode() {
             newField.setAttribute("type", "checkbox");
             newField.innerText(data.name);
             dietField.appendChild(newField);
-
         })
 
         fetch("/recipe/", {
