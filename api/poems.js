@@ -107,7 +107,7 @@ Tehtävä 2 loppuu*/
 });*/
 
 
-router.post("/", (req, res, next) => {
+router.post("/recipe/", (req, res, next) => {
     Category.findOne({ name: req.body.name}, (err, name) => {
         if(err) return next(err);
         if(!name) {
@@ -115,7 +115,7 @@ router.post("/", (req, res, next) => {
                 name: req.body.name
             }).save((err) => {
                 if(err) return next(err);
-                recipes.categories.push(req.body.name);
+                recipes.push(req.body);
                 return res.send(req.body);
             });
         } else {
