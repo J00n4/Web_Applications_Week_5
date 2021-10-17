@@ -17,6 +17,11 @@ let poems = [];
     console.log("Data loaded!")
 })*/
 
+let categories = [
+    {name: "Gluten-free"},
+    {name: "vegan"},
+    {name: "Ovo"},
+];
 
 
 let recipes = [
@@ -115,7 +120,7 @@ router.post("/", (req, res, next) => {
                 name: req.body.name
             }).save((err) => {
                 if(err) return next(err);
-                recipes.push(req.body);
+                categories.push(req.body);
                 return res.send(req.body);
             });
         } else {
